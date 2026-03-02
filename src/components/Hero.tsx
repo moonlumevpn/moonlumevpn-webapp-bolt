@@ -24,7 +24,8 @@ export default function Hero() {
         if (!mounted) return;
         if (Array.isArray(res.data) && res.data.length) {
           const serverCount = res.data.length;
-          const uniqueCountries = new Set(res.data.map((s: any) => s.country)).size;
+          interface Server { country: string; }
+          const uniqueCountries = new Set(res.data.map((s: Server) => s.country)).size;
           
           setStats([
             { label: 'Сервера', value: serverCount.toString(), color: 'purple' },

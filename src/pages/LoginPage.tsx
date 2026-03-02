@@ -49,8 +49,9 @@ export default function LoginPage(){
 
       // Redirect to home page
       window.location.href = '/';
-    } catch (err: any) {
-      setError(err.response?.data?.message || 'Sign in failed. Please try again.');
+    } catch (err) {
+      const errorObj = err as { response?: { data?: { message?: string } } };
+      setError(errorObj.response?.data?.message || 'Sign in failed. Please try again.');
     } finally {
       setLoading(false);
     }

@@ -118,11 +118,12 @@ export default function AccountPage() {
       setSubscriptionError(false);
       const response = await api.get('/api/account/subscription');
       setSubscriptionData(response.data);
-    } catch (error: any) {
-      if (error.response?.status === 404) {
+    } catch (error) {
+      const err = error as { response?: { status?: number } };
+      if (err.response?.status === 404) {
         setSubscriptionError(true);
       }
-      console.error('Failed to fetch subscription:', error);
+      console.error('Failed to fetch subscription:', err);
     } finally {
       setIsLoading(false);
     }

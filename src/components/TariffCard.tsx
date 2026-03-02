@@ -1,5 +1,5 @@
 import React from 'react';
-import { Package, List, Zap, Cloud, DollarSign } from 'lucide-react';
+import { Package, List, Cloud, DollarSign } from 'lucide-react';
 import { daysBetween } from '../lib/dates';
 
 // new properties added for plan display
@@ -9,7 +9,6 @@ export type TariffCardProps = {
   startDate?: string;
   endDate?: string;
   features?: string; // semicolon delim list
-  speedLimit?: string;
   bandwidth?: string;
   onClick?: () => void;
 };
@@ -20,7 +19,6 @@ export default function TariffCard({
   startDate,
   endDate,
   features,
-  speedLimit,
   bandwidth,
   onClick,
 }: TariffCardProps) {

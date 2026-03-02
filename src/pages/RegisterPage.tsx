@@ -203,8 +203,9 @@ export default function RegisterPage() {
 
       // Redirect to home page
       window.location.href = '/';
-    } catch (err: any) {
-      setError(err.response?.data?.message || err.message || 'Registration failed. Please try again.');
+    } catch (err) {
+      const errorObj = err as { response?: { data?: { message?: string } }; message?: string };
+      setError(errorObj.response?.data?.message || errorObj.message || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
     }
