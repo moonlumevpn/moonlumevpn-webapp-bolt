@@ -1,3 +1,8 @@
+.env
+.env.local
+.env.*.local
+.env.*
+
 logs
 *.log
 npm-debug.log*
@@ -15,9 +20,11 @@ dist-ssr
 !.vscode/extensions.json
 .idea
 .DS_Store
+Thumbs.db
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-.env
+*.swp
+*.swo
