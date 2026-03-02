@@ -4,7 +4,7 @@ const features = [
   {
     icon: <Rocket className="w-12 h-12" />,
     emoji: '🚀',
-    title: 'Скорость до 100 Mb/s',
+    title: 'Скорость до 100 Мб/с',
     description: 'Молниеносная скорость для стриминга и загрузок'
   },
   {

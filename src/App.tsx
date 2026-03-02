@@ -7,6 +7,10 @@ import ServerLocations from './components/ServerLocations';
 import HowItWorks from './components/HowItWorks';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import BackgroundEffects from './components/BackgroundEffects';
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import AccountPage from './pages/AccountPage';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,13 +45,21 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  if (window.location.pathname === '/login') {
+    return <LoginPage />;
+  }
+
+  if (window.location.pathname === '/register') {
+    return <RegisterPage />;
+  }
+
+  if (window.location.pathname === '/account') {
+    return <AccountPage />;
+  }
+
   return (
     <div className="relative bg-dark overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-transparent to-blue-900/20"></div>
-        <div className="stars"></div>
-        <div className="twinkling"></div>
-      </div>
+      <BackgroundEffects />
 
       <div className="relative z-10">
         <Header isScrolled={isScrolled} />
