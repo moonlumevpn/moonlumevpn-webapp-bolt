@@ -91,6 +91,10 @@ version: "3.9"
 services:
   moonlumevpn-webapp:
     container_name: moonlumevpn-webapp
+    build:
+      context: .
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
     env_file:
       - .env
     image: ghcr.io/moonlumevpn/moonlumevpn-webapp-bolt:${WEBAPP_IMAGE_TAG:-develop}
@@ -101,7 +105,7 @@ services:
 3. Pull and run (`develop` is default; set `WEBAPP_IMAGE_TAG=production` for production image):
 
 ```bash
-docker compose up -d
+docker compose up -d --build
 ```
 
 4. Stop:
