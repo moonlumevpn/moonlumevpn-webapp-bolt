@@ -16,13 +16,7 @@ Frontend web application for Moonlume VPN, built with React + TypeScript + Vite.
 npm install
 ```
 
-2. Create env file:
-
-```bash
-cp .env.example .env
-```
-
-3. Set API URL in `.env`:
+2. Create `.env` with this example:
 
 ```env
 VITE_API_BASE_URL=https://api.example.com
@@ -31,7 +25,7 @@ VITE_TELEGRAM_BOT_URL=https://t.me/moonlume_support
 WEBAPP_PORT=4000
 ```
 
-4. Run development server:
+3. Run development server:
 
 ```bash
 npm run dev
@@ -87,7 +81,7 @@ docker run -d --name moonlume-webapp -p 4000:4000 moonlumevpn-webapp-bolt:latest
 
 ## Docker Compose (Production)
 
-1. Ensure `.env` exists (copy from `.env.example`).
+1. Ensure `.env` exists (use the example in Quick Start).
 2. Build and run:
 
 ```bash
