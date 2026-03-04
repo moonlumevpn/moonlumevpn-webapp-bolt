@@ -121,10 +121,10 @@
 
   @keyframes starsMove {
     from {
-      transform: translateY(0px);
+      background-position: 0 0;
     }
     to {
-      transform: translateY(-2000px);
+      background-position: 0 -2000px;
     }
   }
 
@@ -141,10 +141,10 @@
 
   @keyframes twinkle {
     from {
-      transform: translateY(0px);
+      background-position: 0 0;
     }
     to {
-      transform: translateY(-2000px);
+      background-position: 0 -2000px;
     }
   }
 

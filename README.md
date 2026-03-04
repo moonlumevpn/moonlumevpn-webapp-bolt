@@ -1,187 +1,121 @@
-# MoonLume VPN - Web Application
+# Moonlume VPN Web App
 
-A modern, responsive web application for MoonLume VPN service built with React, TypeScript, and Vite.
+Frontend web application for Moonlume VPN, built with React + TypeScript + Vite.
 
-## Features
+## Requirements
 
-- User authentication (login/register)
-- Account management dashboard
-- VPN server locations
-- Pricing plans and subscriptions
-- Traffic monitoring and status tracking
-- Responsive design with Tailwind CSS
+- Node.js 20+
+- npm 10+
+- Docker (optional, for containerized production)
 
-## Tech Stack
+## Quick Start
 
-- **Frontend Framework**: React 18+ with TypeScript
-- **Build Tool**: Vite
-- **Styling**: Tailwind CSS
-- **HTTP Client**: Axios
-- **Linting**: ESLint
-- **CSS Processing**: PostCSS
+1. Install dependencies:
 
-## Prerequisites
-
-- Node.js 16+ and npm/yarn/pnpm
-- Git
-
-### Docker (optional for deployment)
-
-To build or run the project in a container you'll need Docker installed on your machine.
-For Debian/Ubuntu systems the easiest way is:
-
-```bash
-sudo apt-get update
-sudo apt-get install -y docker.io
-```
-
-On other distributions or platforms, follow the official
-[Docker installation guide](https://docs.docker.com/get-docker/).
-
-## Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd moonlumevpn-webapp-bolt
-```
-
-2. Install dependencies:
 ```bash
 npm install
-# or
-yarn install
-# or
-pnpm install
 ```
 
-3. Set up environment variables (see Environment Variables section)
+2. Create env file:
 
-## Development
+```bash
+cp .env.example .env
+```
 
-Start the development server:
+3. Set API URL in `.env`:
+
+```env
+VITE_API_BASE_URL=https://api.example.com
+VITE_TELEGRAM_SUPPORT_URL=https://t.me/moonlume_support
+VITE_TELEGRAM_BOT_URL=https://t.me/moonlume_support
+WEBAPP_PORT=4000
+```
+
+4. Run development server:
+
 ```bash
 npm run dev
 ```
 
-The application will be available at `http://localhost:5173`
+App runs on `http://127.0.0.1:8000`.
 
-## Build
+## Available Scripts
 
-Build for production:
+- `npm run dev` - Start local dev server
+- `npm run build` - Build production bundle into `dist/`
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+- `npm run typecheck` - Run TypeScript type checks
+
+## Development Notes
+
+- API base URL comes from `VITE_API_BASE_URL`.
+- If `VITE_API_BASE_URL` is empty, requests use relative paths (same origin).
+- Dev proxy settings are in `vite.config.ts`.
+
+## Production (Without Docker)
+
+1. Build:
+
 ```bash
 npm run build
 ```
 
-Preview production build:
+2. Serve static files from `dist/` with any web server (Nginx, Caddy, Apache, `serve`, etc.).
+
+Example with `serve`:
+
 ```bash
-npm run preview
+npx serve -s dist -l 4000
 ```
 
-## Linting
+## Docker Build + Run
 
-Run ESLint:
+Build image:
+
 ```bash
-npm run lint
+docker build -t moonlumevpn-webapp-bolt:latest \
+  --build-arg VITE_API_BASE_URL=https://api.example.com \
+  .
 ```
+
+Run container:
+
+```bash
+docker run -d --name moonlume-webapp -p 4000:4000 moonlumevpn-webapp-bolt:latest
+```
+
+## Docker Compose (Production)
+
+1. Ensure `.env` exists (copy from `.env.example`).
+2. Build and run:
+
+```bash
+docker compose up -d --build
+```
+
+3. Stop:
+
+```bash
+docker compose down
+```
+
+Compose file: `docker-compose.yml`
 
 ## Environment Variables
 
-The frontend reads the API base URL from `VITE_API_BASE_URL`. During development, the
-Vite dev server proxies `/api` to `http://localhost:5020`, so you usually don't need
-to set it. In production, set it to the full backend origin or leave empty when
-calling the same domain (relative paths).
-
-Create a `.env.local` file in the root directory:
-```env
-VITE_API_BASE_URL=https://api.example.com
-```
-
-Or set the variable in your deployment environment.
+- `VITE_API_BASE_URL` (required for external backend): backend base URL, e.g. `https://api.example.com`
+- `VITE_TELEGRAM_SUPPORT_URL` (optional): Telegram support link used on temporary redirect page
+- `VITE_TELEGRAM_BOT_URL` (optional): Telegram bot link used on temporary redirect page
+- `WEBAPP_PORT` (optional): host port for Docker Compose, default `4000`
 
 ## Project Structure
 
-```
+```text
 src/
-├── components/     # Reusable React components
-├── pages/          # Page components
-├── lib/            # Utility functions and helpers
-├── App.tsx         # Root component
-├── main.tsx        # Entry point
-└── index.css       # Global styles
+  components/   Reusable UI components
+  pages/        Route-level pages
+  lib/          API/auth/date helpers
+  App.tsx       Route switch logic
+  main.tsx      App bootstrap
 ```
-
-## Docker Deployment
-
-These steps show how to run the production build inside a Linux Docker container. An official image is published to GitHub Container Registry, but you can also build your own using the included `Dockerfile`.
-
-### 1. Using the published image
-
-1. **Pull the image** (replace the tag with the one you need):
-   ```bash
-   docker pull ghcr.io/moonlumevpn/moonlumevpn-webapp-bolt:develop-6e87116
-   ```
-
-2. **Run the container** exposing a port and (optionally) setting environment variables:
-   ```bash
-   docker run -d --name moonlume-webapp \
-     -p 4000:4000 \
-     -e VITE_API_BASE_URL="https://api.example.com" \
-     ghcr.io/moonlumevpn/moonlumevpn-webapp-bolt:develop-6e87116
-   ```
-   - `-p 4000:4000` maps the container's HTTP port to the host. Change as needed.
-   - `VITE_API_BASE_URL` configures the API endpoint; omit or set to a relative path if the backend is served from the same origin.
-
-3. **Verify** by opening `http://localhost:4000` in your browser (or the host IP if deploying to a remote machine).
-
-4. To stop/remove the container:
-   ```bash
-   docker stop moonlume-webapp && docker rm moonlume-webapp
-   ```
-
-### 2. Building your own image
-
-If you prefer to build locally (for CI or custom tagging):
-
-```bash
-# build the production image
-docker build -t moonlumevpn-webapp-bolt:latest .
-
-# run it as above
-docker run -d --name moonlume-webapp -p 4000:4000 \
-  -e VITE_API_BASE_URL="https://api.example.com" \
-  moonlumevpn-webapp-bolt:latest
-```
-
-The `Dockerfile` performs a multi-stage build:
-
-- **builder stage** uses Node 20 to install dependencies and run `npm run build`.
-- **production stage** installs `serve` and copies the compiled `dist` directory.
-
-### Notes
-
-- The container listens on port `4000` by default; change the `EXPOSE` port or the `-l` argument in `CMD` if needed.
-- Since this is a static front‑end, environment variables must be baked in at build time or passed via the `VITE_*` prefix as shown.
-
----
-
-### Using docker compsoe
-
-create docker-compose.yml
-```yml
-version: '3.8'
-
-services:
-  moonlume-webapp:
-    image: ghcr.io/moonlumevpn/moonlumevpn-webapp-bolt:develop-6e87116
-    container_name: moonlume-webapp
-    ports:
-      - "4000:4000" # Map the container's port to the host machine
-    environment:
-      - VITE_API_BASE_URL=${VITE_API_BASE_URL} # Use the value from the .env file
-    restart: always
-```
-
-## License
-
-MIT

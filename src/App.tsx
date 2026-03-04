@@ -8,9 +8,7 @@ import HowItWorks from './components/HowItWorks';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import BackgroundEffects from './components/BackgroundEffects';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import AccountPage from './pages/AccountPage';
+import TemporaryRedirectPage from './pages/TemporaryRedirectPage';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -46,15 +44,19 @@ function App() {
   }, []);
 
   if (window.location.pathname === '/login') {
-    return <LoginPage />;
+    return <TemporaryRedirectPage />;
   }
 
   if (window.location.pathname === '/register') {
-    return <RegisterPage />;
+    return <TemporaryRedirectPage />;
   }
 
   if (window.location.pathname === '/account') {
-    return <AccountPage />;
+    return <TemporaryRedirectPage />;
+  }
+
+  if (window.location.pathname === '/payment') {
+    return <TemporaryRedirectPage />;
   }
 
   return (
