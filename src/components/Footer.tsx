@@ -1,5 +1,10 @@
 import { MessageCircle, Mail, Twitter } from 'lucide-react';
 
+const TELEGRAM_SUPPORT_URL =
+  import.meta.env.VITE_TELEGRAM_SUPPORT_URL || 'https://t.me/moonlume_support';
+const TELEGRAM_BOT_URL =
+  import.meta.env.VITE_TELEGRAM_BOT_URL || 'https://t.me/moonlumevpn_bot';
+
 export default function Footer() {
   return (
     <footer className="py-12 px-6 border-t border-purple-500/20">
@@ -40,9 +45,9 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-400">
               <li><a href="#faq" className="hover:text-purple-400 transition-colors">FAQ</a></li>
               <li>
-                <a href="https://t.me/moonlume_support" target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors flex items-center gap-2">
+                <a href={TELEGRAM_SUPPORT_URL} target="_blank" rel="noopener noreferrer" className="hover:text-purple-400 transition-colors flex items-center gap-2">
                   <MessageCircle className="w-4 h-4" />
-                  @moonlume_support
+                  Telegram Support
                 </a>
               </li>
               <li><a href="mailto:support@moonlume.com" className="hover:text-purple-400 transition-colors">Email</a></li>
@@ -56,7 +61,7 @@ export default function Footer() {
           </p>
 
           <div className="flex items-center gap-4">
-            <a href="https://t.me/moonlume" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors">
+            <a href={TELEGRAM_BOT_URL} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors">
               <MessageCircle className="w-5 h-5" />
             </a>
             <a href="https://twitter.com/moonlume" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors">
