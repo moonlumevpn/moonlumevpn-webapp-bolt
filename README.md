@@ -95,6 +95,8 @@ services:
       context: .
       args:
         VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+        VITE_TELEGRAM_SUPPORT_URL: ${VITE_TELEGRAM_SUPPORT_URL}
+        VITE_TELEGRAM_BOT_URL: ${VITE_TELEGRAM_BOT_URL}
     env_file:
       - .env
     image: ghcr.io/moonlumevpn/moonlumevpn-webapp-bolt:${WEBAPP_IMAGE_TAG:-develop}
