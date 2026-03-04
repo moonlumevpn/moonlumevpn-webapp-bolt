@@ -18,6 +18,10 @@ export default function Pricing() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const handleChoosePlan = (planId: number) => {
+    window.location.href = `/payment?planId=${planId}`;
+  };
+
   useEffect(() => {
     let mounted = true;
     api
@@ -107,6 +111,8 @@ export default function Pricing() {
                 </ul>
 
                 <button
+                  type="button"
+                  onClick={() => handleChoosePlan(plan.id)}
                   className={`w-full py-3 rounded-full font-semibold transition-all mt-auto ${
                     plan.isPopular
                       ? 'btn-gradient text-white hover:scale-105'
