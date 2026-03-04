@@ -23,6 +23,7 @@ VITE_API_BASE_URL=https://api.example.com
 VITE_TELEGRAM_SUPPORT_URL=https://t.me/moonlume_support
 VITE_TELEGRAM_BOT_URL=https://t.me/moonlume_support
 WEBAPP_PORT=4000
+WEBAPP_IMAGE_TAG=develop
 ```
 
 3. Run development server:
@@ -82,19 +83,32 @@ docker run -d --name moonlume-webapp -p 4000:4000 moonlumevpn-webapp-bolt:latest
 ## Docker Compose (Production)
 
 1. Ensure `.env` exists (use the example in Quick Start).
-2. Build and run:
+2. Example `docker-compose.yml`:
+
+```yaml
+version: "3.9"
+
+services:
+  moonlumevpn-webapp:
+    container_name: moonlumevpn-webapp
+    env_file:
+      - .env
+    image: ghcr.io/moonlumevpn/moonlumevpn-webapp-bolt:${WEBAPP_IMAGE_TAG:-develop}
+    ports:
+      - "${WEBAPP_PORT:-4000}:4000"
+    restart: unless-stopped
+```
+3. Pull and run (`develop` is default; set `WEBAPP_IMAGE_TAG=production` for production image):
 
 ```bash
-docker compose up -d --build
+docker compose up -d
 ```
 
-3. Stop:
+4. Stop:
 
 ```bash
 docker compose down
 ```
-
-Compose file: `docker-compose.yml`
 
 ## Environment Variables
 
@@ -102,6 +116,7 @@ Compose file: `docker-compose.yml`
 - `VITE_TELEGRAM_SUPPORT_URL` (optional): Telegram support link used on temporary redirect page
 - `VITE_TELEGRAM_BOT_URL` (optional): Telegram bot link used on temporary redirect page
 - `WEBAPP_PORT` (optional): host port for Docker Compose, default `4000`
+- `WEBAPP_IMAGE_TAG` (optional): Docker image tag for Compose, default `develop` (use `production` for prod)
 
 ## Project Structure
 
