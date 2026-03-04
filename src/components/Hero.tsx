@@ -8,6 +8,25 @@ interface Stat {
   color: 'purple' | 'blue';
 }
 
+interface Proxy {
+  stableId: string;
+  name: string;
+}
+
+function extractCountryName(proxyName: string): string {
+  const countryPart = proxyName.split(' - ')[0]?.trim() ?? '';
+  const [firstToken, ...restTokens] = countryPart.split(' ');
+
+  if (!firstToken) return countryPart;
+
+  const hasFlagToken = /[\p{Extended_Pictographic}\p{Regional_Indicator}]/u.test(firstToken);
+  if (hasFlagToken && restTokens.length > 0) {
+    return restTokens.join(' ').trim();
+  }
+
+  return countryPart;
+}
+
 export default function Hero() {
   const [stats, setStats] = useState<Stat[]>([
     { label: 'Сервера', value: '0', color: 'purple' },
@@ -19,13 +38,13 @@ export default function Hero() {
   useEffect(() => {
     let mounted = true;
     api
-      .get('/api/servers')
+      .get('/api/v1/public/proxies')
       .then((res) => {
         if (!mounted) return;
-        if (Array.isArray(res.data) && res.data.length) {
-          const serverCount = res.data.length;
-          interface Server { country: string; }
-          const uniqueCountries = new Set(res.data.map((s: Server) => s.country)).size;
+        if (res.data?.success && Array.isArray(res.data.data)) {
+          const proxies: Proxy[] = res.data.data;
+          const serverCount = proxies.length;
+          const uniqueCountries = new Set(proxies.map((p) => extractCountryName(p.name))).size;
           
           setStats([
             { label: 'Сервера', value: serverCount.toString(), color: 'purple' },
@@ -35,7 +54,7 @@ export default function Hero() {
           ]);
         }
       })
-      .catch((err) => console.error('Failed to load servers:', err));
+      .catch((err) => console.error('Failed to load proxies:', err));
     return () => {
       mounted = false;
     };

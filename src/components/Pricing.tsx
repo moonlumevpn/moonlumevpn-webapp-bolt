@@ -1,13 +1,16 @@
-import { Check } from 'lucide-react';
+﻿import { Check } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import api from '../lib/api';
 
 interface Plan {
+  id: number;
   name: string;
-  price: string;
-  period: string;
+  speedLimitMbps: number;
+  startPrice: number;
+  bandwidthLimitGb: number;
+  isActive: boolean;
+  isPopular: boolean;
   features: string;
-  popular: boolean;
 }
 
 export default function Pricing() {
@@ -18,7 +21,7 @@ export default function Pricing() {
   useEffect(() => {
     let mounted = true;
     api
-      .get('/api/tariffs')
+      .get('/api/v1/public/plans')
       .then((res) => {
         if (!mounted) return;
         if (Array.isArray(res.data) && res.data.length) {
@@ -28,8 +31,8 @@ export default function Pricing() {
       })
       .catch((err) => {
         if (!mounted) return;
-        setError(err?.message || 'Failed to load tariffs');
-        console.error('Failed to load tariffs:', err);
+        setError(err?.message || 'Failed to load plans');
+        console.error('Failed to load plans:', err);
       })
       .finally(() => mounted && setLoading(false));
 
@@ -45,9 +48,7 @@ export default function Pricing() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Выберите свой <span className="text-gradient">тариф</span>
           </h2>
-          <p className="text-gray-400 text-lg">
-            Прозрачные цены без скрытых платежей
-          </p>
+          <p className="text-gray-400 text-lg">Прозрачные цены без скрытых платежей</p>
         </div>
 
         {loading && (
@@ -73,45 +74,49 @@ export default function Pricing() {
           </div>
         ) : (
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {plans.map((plan, index) => (
-            <div
-              key={index}
-              className={`glass-card rounded-2xl p-8 hover:scale-105 transition-transform animate-on-scroll translate-y-10 flex flex-col justify-between h-full ${
-                plan.popular ? 'ring-2 ring-purple-500 shadow-glow' : ''
-              }`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+            {plans.map((plan, index) => (
+              <div
+                key={plan.id}
+                className={`glass-card rounded-2xl p-8 hover:scale-105 transition-transform animate-on-scroll translate-y-10 flex flex-col justify-between h-full ${
+                  plan.isPopular ? 'ring-2 ring-purple-500 shadow-glow' : ''
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
 
-              <div className="mb-6">
-                <span className="text-5xl font-bold text-white">{plan.price}</span>
-                <span className="text-gray-400 ml-2">/ {plan.period}</span>
+                <div className="mb-6">
+                  <span className="text-5xl font-bold text-white">{plan.startPrice} ₽</span>
+                  <span className="text-gray-400 ml-2">/ мес</span>
+                </div>
+
+                <div
+                  className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-bold px-4 py-1 rounded-full inline-block mb-4 transition-opacity duration-200 ${
+                    plan.isPopular ? 'opacity-100' : 'opacity-0'
+                  }`}
+                >
+                  ПОПУЛЯРНЫЙ
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {plan.features.split(';').map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-3">
+                      <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-300">{feature.trim()}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  className={`w-full py-3 rounded-full font-semibold transition-all mt-auto ${
+                    plan.isPopular
+                      ? 'btn-gradient text-white hover:scale-105'
+                      : 'glass-button text-white hover:scale-105'
+                  }`}
+                >
+                  Выбрать план
+                </button>
               </div>
-
-              <div className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-bold px-4 py-1 rounded-full inline-block mb-4 transition-opacity duration-200 ${
-                plan.popular ? 'opacity-100' : 'opacity-0'
-              }`}>
-                ПОПУЛЯРНЫЙ
-              </div>
-
-              <ul className="space-y-4 mb-8">
-                {plan.features.split(';').map((feature, idx) => (
-                  <li key={idx} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-300">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-              <button className={`w-full py-3 rounded-full font-semibold transition-all mt-auto ${
-                plan.popular
-                  ? 'btn-gradient text-white hover:scale-105'
-                  : 'glass-button text-white hover:scale-105'
-              }`}>
-                Выбрать план
-              </button>
-            </div>
-          ))}
+            ))}
           </div>
         )}
       </div>
