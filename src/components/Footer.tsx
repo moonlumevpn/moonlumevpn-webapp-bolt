@@ -73,7 +73,6 @@ export default function Footer() {
         <div className="pt-8 border-t border-purple-500/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 text-sm text-center mx-auto">
             <p>© 2026 Moonlume VPN. Все права защищены.</p>
-            <p>Разработано ИП Айгиз Искужин, ИНН 024803896842</p>
           </div>
         </div>
       </div>
