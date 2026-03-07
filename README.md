@@ -86,11 +86,9 @@ docker run -d --name moonlume-webapp -p 4000:4000 moonlumevpn-webapp-bolt:latest
 2. Example `docker-compose.yml`:
 
 ```yaml
-version: "3.9"
-
 services:
   moonlumevpn-webapp:
-    container_name: moonlumevpn-webapp
+    container_name: moonlumevpn-web
     build:
       context: .
       args:
@@ -102,7 +100,15 @@ services:
     image: ghcr.io/moonlumevpn/moonlumevpn-webapp-bolt:${WEBAPP_IMAGE_TAG:-develop}
     ports:
       - "${WEBAPP_PORT:-4000}:4000"
+    networks:
+      - moonlumevpn-network
     restart: unless-stopped
+
+networks:
+  moonlumevpn-network:
+    external: true
+    name: moonlumevpn-network
+  
 ```
 3. Pull and run (`develop` is default; set `WEBAPP_IMAGE_TAG=production` for production image):
 
