@@ -9,6 +9,7 @@ import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import BackgroundEffects from './components/BackgroundEffects';
 import TemporaryRedirectPage from './pages/TemporaryRedirectPage';
+import PayPage from './pages/PayPage';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,6 +58,10 @@ function App() {
 
   if (window.location.pathname === '/payment') {
     return <TemporaryRedirectPage />;
+  }
+
+  if (/^\/pay\/[^/]+$/.test(window.location.pathname)) {
+    return <PayPage />;
   }
 
   return (

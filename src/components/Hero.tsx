@@ -28,6 +28,7 @@ function extractCountryName(proxyName: string): string {
 }
 
 export default function Hero() {
+  const reconnectPath = '/payment';
   const [stats, setStats] = useState<Stat[]>([
     { label: 'Сервера', value: '0', color: 'purple' },
     { label: 'Страны', value: '0', color: 'blue' },
@@ -76,7 +77,13 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button className="btn-gradient px-8 py-4 rounded-full text-white font-semibold text-lg hover:scale-105 transition-transform shadow-glow">
+            <button
+              type="button"
+              onClick={() => {
+                window.location.href = reconnectPath;
+              }}
+              className="btn-gradient px-8 py-4 rounded-full text-white font-semibold text-lg hover:scale-105 transition-transform shadow-glow"
+            >
               Попробовать бесплатно (3 дня)
             </button>
             <button
@@ -107,3 +114,4 @@ export default function Hero() {
     </section>
   );
 }
+

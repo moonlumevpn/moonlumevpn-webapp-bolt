@@ -18,8 +18,8 @@ export default function Pricing() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const handleChoosePlan = (planId: number) => {
-    window.location.href = `/payment?planId=${planId}`;
+  const handleChoosePlan = (_planId: number) => {
+    window.location.href = '/payment';
   };
 
   useEffect(() => {

@@ -10,14 +10,14 @@ const features = [
   {
     icon: <Globe className="w-12 h-12" />,
     emoji: '🌐',
-    title: 'Доступ к Instagram, TikTok, Twitter',
+    title: 'Доступ к Telegram, Instagram, TikTok, Twitter',
     description: 'Полный доступ ко всем соцсетям без ограничений'
   },
   {
-    icon: <Youtube className="w-12 h-12" />,
-    emoji: '🔞',
-    title: 'YouTube без рекламы',
-    description: 'Смотрите любимые видео без назойливой рекламы'
+    icon: <Rocket className="w-12 h-12" />,
+    emoji: '⚡',
+    title: 'Автоподбор лучшего сервера',
+    description: 'VPN сам выбирает самый быстрый сервер в один клик'
   },
   {
     icon: <Users className="w-12 h-12" />,
@@ -28,14 +28,14 @@ const features = [
   {
     icon: <Gift className="w-12 h-12" />,
     emoji: '🆓',
-    title: '7 дней бесплатно',
+    title: '7 дня бесплатно',
     description: 'Полнофункциональный пробный период без оплаты'
   },
   {
     icon: <Headphones className="w-12 h-12" />,
     emoji: '📱',
-    title: 'Поддержка 24/7',
-    description: 'Всегда готовы помочь в любое время суток'
+    title: 'Поддержка',
+    description: 'Всегда готовы помочь'
   }
 ];
 

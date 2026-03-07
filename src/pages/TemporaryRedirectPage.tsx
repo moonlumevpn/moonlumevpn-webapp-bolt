@@ -2,7 +2,7 @@ import BackgroundEffects from '../components/BackgroundEffects';
 import Moon from '../components/Moon';
 
 const TELEGRAM_SUPPORT_URL =
-  import.meta.env.VITE_TELEGRAM_SUPPORT_URL || 'https://t.me/moonlume_support';
+  import.meta.env.VITE_TELEGRAM_SUPPORT_URL || 'https://t.me/mrx_moonlume';
 const TELEGRAM_BOT_URL =
   import.meta.env.VITE_TELEGRAM_BOT_URL || 'https://t.me/moonlumevpn_bot';
 
