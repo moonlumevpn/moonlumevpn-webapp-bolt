@@ -25,7 +25,7 @@ export default function Pricing() {
   useEffect(() => {
     let mounted = true;
     api
-      .get('/api/v1/public/plans')
+      .get('/api/v1/vpn-service/public/plans')
       .then((res) => {
         if (!mounted) return;
         if (Array.isArray(res.data) && res.data.length) {
