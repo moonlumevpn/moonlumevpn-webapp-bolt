@@ -5,7 +5,7 @@ const steps = [
     icon: <Download className="w-12 h-12" />,
     emoji: '📥',
     title: 'Скачайте приложение',
-    description: 'Загрузите Moonlume VPN на любое устройство'
+    description: 'Установите Moonlume на любое устройство'
   },
   {
     icon: <Zap className="w-12 h-12" />,
@@ -16,8 +16,8 @@ const steps = [
   {
     icon: <Sparkles className="w-12 h-12" />,
     emoji: '✨',
-    title: 'Наслаждайтесь свободой',
-    description: 'Серфите интернет без ограничений'
+    title: 'Пользуйтесь интернетом безопасно',
+    description: 'Защищайте данные и соединение каждый день'
   }
 ];
 
@@ -30,7 +30,7 @@ export default function HowItWorks() {
             Как это <span className="text-gradient">работает</span>?
           </h2>
           <p className="text-gray-400 text-lg">
-            Всего 3 простых шага до полной свободы в интернете
+            Всего 3 простых шага до защищённого интернет-соединения
           </p>
         </div>
 

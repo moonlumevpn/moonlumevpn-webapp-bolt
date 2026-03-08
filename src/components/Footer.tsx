@@ -13,9 +13,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center space-x-2 mb-4">
               <span className="text-3xl">🌙</span>
-              <span className="text-xl font-bold text-white">
-                Moonlume <span className="text-purple-400">VPN</span>
-              </span>
+              <span className="text-xl font-bold text-white">Moonlume</span>
             </div>
             <p className="text-gray-400 text-sm">
               Лунный свет в кромешной пустоте интернета
@@ -72,7 +70,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-purple-500/20 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-gray-400 text-sm text-center mx-auto">
-            <p>© 2026 Moonlume VPN. Все права защищены.</p>
+            <p>© 2026 Moonlume. Все права защищены.</p>
           </div>
         </div>
       </div>

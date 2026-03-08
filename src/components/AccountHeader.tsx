@@ -23,9 +23,7 @@ export default function AccountHeader({ balance = '0.00' }: AccountHeaderProps) 
           onClick={() => (window.location.href = '/')}
         >
           <span className="text-3xl">🌙</span>
-          <span className="text-2xl font-bold text-white">
-            Moonlume <span className="text-purple-400">VPN</span>
-          </span>
+          <span className="text-2xl font-bold text-white">Moonlume</span>
         </div>
 
         <div className="flex items-center space-x-4 relative">

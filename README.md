@@ -1,6 +1,6 @@
-# Moonlume VPN Web App
+# Moonlume Web App
 
-Frontend web application for Moonlume VPN, built with React + TypeScript + Vite.
+Frontend web application for Moonlume, built with React + TypeScript + Vite.
 
 ## Requirements
 

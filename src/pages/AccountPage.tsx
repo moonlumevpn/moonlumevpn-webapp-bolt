@@ -260,7 +260,7 @@ export default function AccountPage() {
               ) : subscriptionError ? (
                 <div className="glass-card rounded-2xl p-8 text-center border border-amber-500/50 bg-amber-900/20">
                   <h2 className="text-xl font-bold text-white mb-4">У вас нет активной подписка</h2>
-                  <p className="text-gray-300 mb-6">Выберите тариф и начните использовать VPN</p>
+                  <p className="text-gray-300 mb-6">Выберите тариф и активируйте защищённое соединение</p>
                   <button
                     onClick={() => setActiveTab('Plan')}
                     className="px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-xl transition-colors"

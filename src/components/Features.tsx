@@ -10,14 +10,14 @@ const features = [
   {
     icon: <Globe className="w-12 h-12" />,
     emoji: '🌐',
-    title: 'Доступ к Telegram, Instagram, TikTok, Twitter',
-    description: 'Полный доступ ко всем соцсетям без ограничений'
+    title: 'Безопасный доступ в интернет',
+    description: 'Стабильная защита интернет-трафика для повседневных задач'
   },
   {
     icon: <Rocket className="w-12 h-12" />,
     emoji: '⚡',
     title: 'Автоподбор лучшего сервера',
-    description: 'VPN сам выбирает самый быстрый сервер в один клик'
+    description: 'Сервис автоматически выбирает оптимальный сервер в один клик'
   },
   {
     icon: <Users className="w-12 h-12" />,
@@ -45,10 +45,10 @@ export default function Features() {
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-on-scroll opacity-0 translate-y-10">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Почему <span className="text-gradient">Moonlume VPN</span>?
+            Почему <span className="text-gradient">Moonlume</span>?
           </h2>
           <p className="text-gray-400 text-lg">
-            Все что нужно для безопасного и свободного интернета
+            Все что нужно для приватного и безопасного интернет-подключения
           </p>
         </div>
 

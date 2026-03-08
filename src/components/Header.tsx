@@ -34,9 +34,7 @@ export default function Header({ isScrolled }: HeaderProps) {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => scrollToSection('home')}>
             <span className="text-3xl">🌙</span>
-            <span className="text-2xl font-bold text-white">
-              Moonlume <span className="text-purple-400">VPN</span>
-            </span>
+            <span className="text-2xl font-bold text-white">Moonlume</span>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
