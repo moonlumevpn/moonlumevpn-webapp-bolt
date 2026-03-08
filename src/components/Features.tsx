@@ -1,4 +1,4 @@
-import { Rocket, Globe, Youtube, Users, Gift, Headphones } from 'lucide-react';
+import { Rocket, Globe, Users, Gift, Headphones } from 'lucide-react';
 
 const features = [
   {
