@@ -28,7 +28,7 @@ const features = [
   {
     icon: <Gift className="w-12 h-12" />,
     emoji: '🆓',
-    title: '7 дня бесплатно',
+    title: '7 дней бесплатно',
     description: 'Полнофункциональный пробный период без оплаты'
   },
   {
