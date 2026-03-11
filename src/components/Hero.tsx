@@ -73,7 +73,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-xl md:text-2xl text-gray-300 mb-12">
-            Защищённое интернет-подключение от <span className="text-purple-400 font-bold">150₽/мес.</span>
+            Защищённое интернет-подключение от <span className="text-purple-400 font-bold">79₽/мес.</span>
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -84,7 +84,7 @@ export default function Hero() {
               }}
               className="btn-gradient px-8 py-4 rounded-full text-white font-semibold text-lg hover:scale-105 transition-transform shadow-glow"
             >
-              Попробовать бесплатно (3 дня)
+              Попробовать бесплатно (7 дней)
             </button>
             <button
               onClick={() => {
