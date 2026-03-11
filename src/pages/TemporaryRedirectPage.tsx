@@ -23,7 +23,7 @@ export default function TemporaryRedirectPage() {
         <div className="w-full max-w-lg text-center">
           <Moon />
 
-          <h1 className="text-4xl font-bold text-white">Moonlume</h1>
+          <h1 className="text-4xl font-bold text-white">Moonlume VPN</h1>
 
           <p className="mt-4 text-gray-300">
             Login, registration, and payment pages are temporarily unavailable.

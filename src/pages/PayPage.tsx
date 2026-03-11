@@ -212,7 +212,7 @@ export default function PayPage() {
         <div className="w-full max-w-md">
           <div className="text-center">
             <Moon />
-            <h1 className="text-3xl font-bold text-white mb-6">Moonlume</h1>
+            <h1 className="text-3xl font-bold text-white mb-6">Moonlume VPN</h1>
           </div>
 
           <div className="bg-dark/80 ring-1 ring-white/5 rounded-2xl p-6 mt-6">

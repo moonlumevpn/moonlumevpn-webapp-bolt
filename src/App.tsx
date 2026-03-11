@@ -10,6 +10,8 @@ import Footer from './components/Footer';
 import BackgroundEffects from './components/BackgroundEffects';
 import TemporaryRedirectPage from './pages/TemporaryRedirectPage';
 import PayPage from './pages/PayPage';
+import SeoLandingPage from './pages/seo/SeoLandingPage';
+import seoPages from './pages/seo/seoPages';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,6 +64,11 @@ function App() {
 
   if (/^\/pay\/[^/]+$/.test(window.location.pathname)) {
     return <PayPage />;
+  }
+
+  const seoContent = seoPages[window.location.pathname];
+  if (seoContent) {
+    return <SeoLandingPage isScrolled={isScrolled} content={seoContent} />;
   }
 
   return (

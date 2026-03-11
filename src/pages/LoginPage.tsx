@@ -67,7 +67,7 @@ export default function LoginPage(){
           <div className="w-full max-w-md">
             <div className="text-center animate-on-scroll opacity-0 translate-y-10">
               <Moon />
-              <h2 className="text-3xl font-bold text-white mb-6">Moonlume</h2>
+              <h2 className="text-3xl font-bold text-white mb-6">Moonlume VPN</h2>
             </div>
 
             <div className="bg-dark/80 ring-1 ring-white/5 rounded-2xl p-6 mt-6">

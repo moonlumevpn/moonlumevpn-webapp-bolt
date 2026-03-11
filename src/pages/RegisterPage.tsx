@@ -220,7 +220,7 @@ export default function RegisterPage() {
             <div className="text-center mb-12">
               <Moon />
               <h1 className="text-4xl font-bold text-white mt-4">
-                Moonlume
+                Moonlume VPN
                 <br/>
               </h1>
               <h1 className='mt-2 text-4xl text-white'>
