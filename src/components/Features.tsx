@@ -1,23 +1,23 @@
-import { Rocket, Globe, Youtube, Users, Gift, Headphones } from 'lucide-react';
+import { Rocket, Globe, Users, Gift, Headphones } from 'lucide-react';
 
 const features = [
   {
     icon: <Rocket className="w-12 h-12" />,
     emoji: '🚀',
-    title: 'Скорость до 100 Mb/s',
+    title: 'Скорость до 100 Мб/с',
     description: 'Молниеносная скорость для стриминга и загрузок'
   },
   {
     icon: <Globe className="w-12 h-12" />,
     emoji: '🌐',
-    title: 'Доступ к Instagram, TikTok, Twitter',
-    description: 'Полный доступ ко всем соцсетям без ограничений'
+    title: 'Безопасный доступ в интернет',
+    description: 'Стабильная защита интернет-трафика для повседневных задач'
   },
   {
-    icon: <Youtube className="w-12 h-12" />,
-    emoji: '🔞',
-    title: 'YouTube без рекламы',
-    description: 'Смотрите любимые видео без назойливой рекламы'
+    icon: <Rocket className="w-12 h-12" />,
+    emoji: '⚡',
+    title: 'Автоподбор лучшего сервера',
+    description: 'Сервис автоматически выбирает оптимальный сервер в один клик'
   },
   {
     icon: <Users className="w-12 h-12" />,
@@ -34,8 +34,8 @@ const features = [
   {
     icon: <Headphones className="w-12 h-12" />,
     emoji: '📱',
-    title: 'Поддержка 24/7',
-    description: 'Всегда готовы помочь в любое время суток'
+    title: 'Поддержка',
+    description: 'Всегда готовы помочь'
   }
 ];
 
@@ -45,10 +45,10 @@ export default function Features() {
       <div className="container mx-auto">
         <div className="text-center mb-16 animate-on-scroll opacity-0 translate-y-10">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Почему <span className="text-gradient">Moonlume VPN</span>?
+            Почему <span className="text-gradient">Moonlume</span>?
           </h2>
           <p className="text-gray-400 text-lg">
-            Все что нужно для безопасного и свободного интернета
+            Все что нужно для приватного и безопасного интернет-подключения
           </p>
         </div>
 

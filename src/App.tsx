@@ -7,6 +7,11 @@ import ServerLocations from './components/ServerLocations';
 import HowItWorks from './components/HowItWorks';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
+import BackgroundEffects from './components/BackgroundEffects';
+import TemporaryRedirectPage from './pages/TemporaryRedirectPage';
+import PayPage from './pages/PayPage';
+import SeoLandingPage from './pages/seo/SeoLandingPage';
+import seoPages from './pages/seo/seoPages';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,13 +46,34 @@ function App() {
     return () => observer.disconnect();
   }, []);
 
+  if (window.location.pathname === '/login') {
+    return <TemporaryRedirectPage />;
+  }
+
+  if (window.location.pathname === '/register') {
+    return <TemporaryRedirectPage />;
+  }
+
+  if (window.location.pathname === '/account') {
+    return <TemporaryRedirectPage />;
+  }
+
+  if (window.location.pathname === '/payment') {
+    return <TemporaryRedirectPage />;
+  }
+
+  if (/^\/pay\/[^/]+$/.test(window.location.pathname)) {
+    return <PayPage />;
+  }
+
+  const seoContent = seoPages[window.location.pathname];
+  if (seoContent) {
+    return <SeoLandingPage isScrolled={isScrolled} content={seoContent} />;
+  }
+
   return (
     <div className="relative bg-dark overflow-hidden">
-      <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-purple-900/20 via-transparent to-blue-900/20"></div>
-        <div className="stars"></div>
-        <div className="twinkling"></div>
-      </div>
+      <BackgroundEffects />
 
       <div className="relative z-10">
         <Header isScrolled={isScrolled} />

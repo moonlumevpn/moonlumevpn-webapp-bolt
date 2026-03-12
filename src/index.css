@@ -48,14 +48,14 @@
 
   .glass-card {
     background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(0px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px 0 rgba(107, 70, 193, 0.15);
   }
 
   .glass-button {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(0px);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
@@ -121,10 +121,10 @@
 
   @keyframes starsMove {
     from {
-      transform: translateY(0px);
+      background-position: 0 0;
     }
     to {
-      transform: translateY(-2000px);
+      background-position: 0 -2000px;
     }
   }
 
@@ -141,10 +141,14 @@
 
   @keyframes twinkle {
     from {
-      transform: translateY(0px);
+      background-position: 0 0;
     }
     to {
-      transform: translateY(-2000px);
+      background-position: 0 -2000px;
     }
+  }
+
+  .flag-symbol {
+    font-family: "Segoe UI Symbol";
   }
 }
