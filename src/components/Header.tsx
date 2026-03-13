@@ -27,7 +27,9 @@ export default function Header({ isScrolled }: HeaderProps) {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-dark/80 backdrop-blur-lg border-b border-purple-500/20' : 'bg-transparent'
+        isScrolled
+          ? 'bg-dark/80 backdrop-blur-lg border-b border-purple-500/20 shadow-glow'
+          : 'bg-transparent'
       }`}
     >
       <nav className="container mx-auto px-6 py-4">
@@ -42,9 +44,6 @@ export default function Header({ isScrolled }: HeaderProps) {
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('home')} className="text-white hover:text-purple-400 transition-colors">
-              Главная
-            </button>
             <button onClick={() => scrollToSection('features')} className="text-white hover:text-purple-400 transition-colors">
               Преимущества
             </button>

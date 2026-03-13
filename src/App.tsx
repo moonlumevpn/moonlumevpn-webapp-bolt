@@ -81,7 +81,6 @@ function App() {
         <Features />
         <Pricing />
         <ServerLocations />
-        <HowItWorks />
         <FAQ />
         <Footer />
       </div>

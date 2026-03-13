@@ -29,7 +29,16 @@ export default function Pricing() {
       .then((res) => {
         if (!mounted) return;
         if (Array.isArray(res.data) && res.data.length) {
-          setPlans(res.data);
+          const normalized = res.data.map((plan: Plan) => ({ ...plan }));
+          if (
+            import.meta.env?.DEV &&
+            normalized.length > 0 &&
+            !normalized.some((plan) => plan.isPopular)
+          ) {
+            const randomIndex = Math.floor(Math.random() * normalized.length);
+            normalized[randomIndex].isPopular = true;
+          }
+          setPlans(normalized);
           setError(null);
         }
       })
@@ -52,7 +61,9 @@ export default function Pricing() {
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Выберите свой <span className="text-gradient">тариф</span>
           </h2>
-          <p className="text-gray-400 text-lg">Прозрачные цены без скрытых платежей</p>
+          <p className="text-gray-400 text-lg">
+            7 дней бесплатно • Без привязки карты • Отмена в любой момент
+          </p>
         </div>
 
         {loading && (
@@ -81,31 +92,52 @@ export default function Pricing() {
             {plans.map((plan, index) => (
               <div
                 key={plan.id}
-                className={`glass-card rounded-2xl p-8 hover:scale-105 transition-transform animate-on-scroll translate-y-10 flex flex-col justify-between h-full ${
-                  plan.isPopular ? 'ring-2 ring-purple-500 shadow-glow' : ''
+                className={`group relative p-8 rounded-3xl backdrop-blur-xl transition-all duration-500 transform animate-on-scroll translate-y-10 flex flex-col justify-between h-full ${
+                  plan.isPopular
+                    ? 'bg-gradient-to-b from-purple-500/20 via-violet-500/10 to-transparent border-2 border-purple-400/60 shadow-2xl shadow-purple-500/40 md:scale-105 hover:border-purple-300/80'
+                    : 'bg-white/5 border border-white/10 hover:border-purple-300/60'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <h3 className="text-2xl font-bold text-white mb-2">{plan.name}</h3>
+                {plan.isPopular && (
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2">
+                    <span className="px-5 py-2 bg-gradient-to-r from-purple-500 to-violet-500 rounded-full text-sm font-bold shadow-lg shadow-purple-500/50 text-white">
+                      РЕКОМЕНДУЕТСЯ
+                    </span>
+                  </div>
+                )}
 
-                <div className="mb-6">
-                  <span className="text-5xl font-bold text-white">{plan.startPrice} ₽</span>
-                  <span className="text-gray-400 ml-2">/ мес</span>
+                <div className={`${plan.isPopular ? 'text-center mb-10' : 'text-center mb-8'}`}>
+                  <h3
+                    className={`${
+                      plan.isPopular
+                        ? 'text-3xl font-bold mb-6 text-white group-hover:text-purple-300 transition'
+                        : 'text-2xl font-bold mb-4 text-white'
+                    }`}
+                  >
+                    {plan.name}
+                  </h3>
+                  <div className={`flex items-end justify-center ${plan.isPopular ? 'gap-3' : 'gap-2'}`}>
+                    <span
+                      className={`${
+                        plan.isPopular
+                          ? 'text-6xl font-bold bg-gradient-to-r from-purple-300 to-violet-400 bg-clip-text text-transparent'
+                          : 'text-5xl font-bold text-white'
+                      }`}
+                    >
+                      {plan.startPrice} ₽
+                    </span>
+                    <span className={`${plan.isPopular ? 'mb-3 text-lg' : 'mb-2'} text-gray-400`}>/мес</span>
+                  </div>
                 </div>
 
-                <div
-                  className={`bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm font-bold px-4 py-1 rounded-full inline-block mb-4 transition-opacity duration-200 ${
-                    plan.isPopular ? 'opacity-100' : 'opacity-0'
-                  }`}
-                >
-                  ПОПУЛЯРНЫЙ
-                </div>
-
-                <ul className="space-y-4 mb-8">
+                <ul className={`${plan.isPopular ? 'space-y-4 mb-10' : 'space-y-4 mb-8'}`}>
                   {plan.features.split(';').map((feature, idx) => (
                     <li key={idx} className="flex items-start gap-3">
                       <Check className="w-5 h-5 text-purple-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-300">{feature.trim()}</span>
+                      <span className={`${plan.isPopular ? 'text-sm' : 'text-base'} text-gray-300`}>
+                        {feature.trim()}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -113,10 +145,10 @@ export default function Pricing() {
                 <button
                   type="button"
                   onClick={handleChoosePlan}
-                  className={`w-full py-3 rounded-full font-semibold transition-all mt-auto ${
+                  className={`w-full mt-auto transition transform hover:scale-105 ${
                     plan.isPopular
-                      ? 'btn-gradient text-white hover:scale-105'
-                      : 'glass-button text-white hover:scale-105'
+                      ? 'py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-purple-500 to-violet-500 hover:shadow-2xl hover:shadow-purple-500/50 text-white active:scale-95'
+                      : 'py-3 rounded-full font-semibold glass-button text-white'
                   }`}
                 >
                   Выбрать план

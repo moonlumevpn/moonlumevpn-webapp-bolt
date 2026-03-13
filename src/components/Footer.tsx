@@ -14,7 +14,7 @@ export default function Footer() {
               <span className="text-xl font-bold text-white">Moonlume VPN</span>
             </div>
             <p className="text-gray-400 text-sm">
-              Лунный свет в кромешной пустоте интернета
+              Ваш надежный проводник в мире свободного интернета. Быстро, безопасно, конфиденциально.
             </p>
           </div>
 

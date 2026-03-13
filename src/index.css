@@ -149,7 +149,12 @@
   }
 
   .flag-symbol {
-    font-family: "Segoe UI Symbol";
+    font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "Segoe UI Symbol", sans-serif;
   }
 
+  .flag-symbol img.emoji {
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+  }
 }
