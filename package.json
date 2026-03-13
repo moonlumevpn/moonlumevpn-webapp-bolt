@@ -39,6 +39,7 @@
   "reactSnap": {
     "source": "dist",
     "include": [
+      "/",
       "/vpn",
       "/vpn-for-android",
       "/vpn-for-ios",
