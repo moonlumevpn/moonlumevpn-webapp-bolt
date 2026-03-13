@@ -87,9 +87,6 @@ export default function ServerLocations() {
                     {proxy.name.split(' ')[0]} {/* Extract the flag emoji */}
                   </div>
                   <h4 className="text-white font-semibold mb-1">{proxy.name.split(' - ')[0]}</h4>
-                  <p className="text-gray-400 text-sm mb-2">
-                    {proxy.name.split(' - ')[1]} {/* Split the name for country/region */}
-                  </p>
                   <div className="inline-block px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-xs font-semibold transition-all duration-150 hover:bg-green-500/40 hover:shadow-glow">
                     {proxy.latencyMs > 400 ? proxy.latencyMs - 100 : proxy.latencyMs} ms
                   </div>

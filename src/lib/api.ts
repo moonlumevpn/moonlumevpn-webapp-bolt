@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getAccessToken, ensureValidAccessToken, refreshTokens } from './auth';
 
-const base = import.meta.env.VITE_API_BASE_URL || '';
+const base = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_BASE_URL || '');
 
 export const api = axios.create({
   baseURL: base,

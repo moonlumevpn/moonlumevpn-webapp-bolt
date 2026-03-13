@@ -90,7 +90,7 @@ export async function refreshTokens(): Promise<boolean> {
     return false;
   }
 
-  const base = import.meta.env.VITE_API_BASE_URL || '';
+  const base = import.meta.env.DEV ? '' : (import.meta.env.VITE_API_BASE_URL || '');
   try {
     const res = await fetch(`${base}/api/auth/refresh`, {
       method: 'POST',

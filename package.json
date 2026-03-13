@@ -51,7 +51,7 @@
       "--no-sandbox",
       "--disable-setuid-sandbox"
     ],
-    "inlineCss": true,
+    "inlineCss": false,
     "minifyHtml": true
   }
 }

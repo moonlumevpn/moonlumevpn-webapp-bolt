@@ -1,43 +1,43 @@
-import { Rocket, Globe, Users, Gift, Headphones } from 'lucide-react';
+import { Rocket, Globe, Users, Gift, Headphones, EyeOff, Shield, Zap } from 'lucide-react';
 
 const features = [
   {
-    icon: <Rocket className="w-12 h-12" />,
-    emoji: '🚀',
-    title: 'Скорость до 100 Мб/с',
-    description: 'Молниеносная скорость для стриминга и загрузок'
+    icon: <Shield className="w-12 h-12" />,
+    emoji: "🔐",
+    title: "Надёжное шифрование",
+    description: "Современные протоколы защищают интернет-трафик от перехвата"
+  },
+  {
+    icon: <EyeOff className="w-12 h-12" />,
+    emoji: "🕵️",
+    title: "Без логов",
+    description: "Мы не храним историю подключений и посещённые сайты"
+  },
+  {
+    icon: <Zap className="w-12 h-12" />,
+    emoji: "⚡",
+    title: "Высокая скорость",
+    description: "Стабильное соединение для стриминга, игр и загрузок"
   },
   {
     icon: <Globe className="w-12 h-12" />,
-    emoji: '🌐',
-    title: 'Безопасный доступ в интернет',
-    description: 'Стабильная защита интернет-трафика для повседневных задач'
+    emoji: "🌍",
+    title: "Доступ к сайтам",
+    description: "Обход блокировок и свободный интернет"
   },
   {
     icon: <Rocket className="w-12 h-12" />,
-    emoji: '⚡',
-    title: 'Автоподбор лучшего сервера',
-    description: 'Сервис автоматически выбирает оптимальный сервер в один клик'
-  },
-  {
-    icon: <Users className="w-12 h-12" />,
-    emoji: '🫂',
-    title: 'Бонус до 36 дней за друга',
-    description: 'Приглашайте друзей и получайте бесплатные дни'
+    emoji: "🤖",
+    title: "Автоподбор сервера",
+    description: "Приложение автоматически выбирает лучший сервер"
   },
   {
     icon: <Gift className="w-12 h-12" />,
-    emoji: '🆓',
-    title: '7 дней бесплатно',
-    description: 'Полнофункциональный пробный период без оплаты'
-  },
-  {
-    icon: <Headphones className="w-12 h-12" />,
-    emoji: '📱',
-    title: 'Поддержка',
-    description: 'Всегда готовы помочь'
+    emoji: "🎁",
+    title: "Бонус за друзей",
+    description: "Приглашайте друзей и получайте бесплатные дни"
   }
-];
+]
 
 export default function Features() {
   return (

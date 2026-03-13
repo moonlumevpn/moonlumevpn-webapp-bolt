@@ -33,7 +33,11 @@ export default function Header({ isScrolled }: HeaderProps) {
       <nav className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2 cursor-pointer" onClick={() => scrollToSection('home')}>
-            <span className="text-3xl">🌙</span>
+            <img
+              src="/icon.png"
+              alt="Moonlume VPN"
+              className="h-8 w-8 rounded-full"
+            />
             <span className="text-2xl font-bold text-white">Moonlume VPN</span>
           </div>
 
