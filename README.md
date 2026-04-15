@@ -18,7 +18,7 @@ npm install
 2. Create `.env` with this example:
 
 ```env
-VITE_API_BASE_URL=https://api.example.com
+VITE_API_BASE_URL=https://web.moonlumevpn.ru/api
 ```
 
 3. Run development server:
@@ -39,9 +39,9 @@ App runs on `http://127.0.0.1:8000`.
 
 ## Development Notes
 
-- API base URL comes from `VITE_API_BASE_URL`.
-- If `VITE_API_BASE_URL` is empty, requests use relative paths (same origin).
-- Dev proxy settings are in `vite.config.ts`.
+- API base URL comes from `VITE_API_BASE_URL`, with a default of `https://web.moonlumevpn.ru/api`.
+- In development, `/api` is proxied by `vite.config.ts` so local requests still work without CORS issues.
+- If you need a different backend, override `VITE_API_BASE_URL` in `.env` or as a repo variable.
 
 ## Deployment
 
@@ -49,12 +49,12 @@ The site is deployed with GitHub Actions to GitHub Pages.
 
 1. Push production-ready commits to the `production` branch.
 2. Make sure the repository has GitHub Pages enabled and uses the GitHub Actions source.
-3. Set the repository variable `VITE_API_BASE_URL` to the production API base URL if the backend is hosted separately.
+3. Set the repository variable `VITE_API_BASE_URL` to the production API base URL, usually `https://web.moonlumevpn.ru/api`.
 4. The workflow will build `dist/` and publish it to Pages automatically.
 
 ## Environment Variables
 
-- `VITE_API_BASE_URL` (required for external backend and Pages deploy): backend base URL, e.g. `https://api.example.com`
+- `VITE_API_BASE_URL` (required for external backend and Pages deploy): backend base URL, e.g. `https://web.moonlumevpn.ru/api`
 
 ## Project Structure
 
