@@ -46,7 +46,7 @@ export default function Hero() {
   useEffect(() => {
     let mounted = true;
     api
-      .get('/api/v1/public/proxies')
+      .get('/v1/public/proxies')
       .then((res) => {
         if (!mounted) return;
         if (res.data?.success && Array.isArray(res.data.data)) {

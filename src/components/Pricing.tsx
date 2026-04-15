@@ -62,7 +62,7 @@ export default function Pricing() {
     let mounted = true;
 
     const fetchPlans = async () => {
-      const endpoints = ['/api/v1/vpn-service/public/plans', '/api/v1/public/plans'];
+      const endpoints = ['/v1/vpn-service/public/plans', '/v1/public/plans'];
       let lastError: any = null;
 
       for (const endpoint of endpoints) {
