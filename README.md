@@ -6,7 +6,6 @@ Frontend web application for Moonlume, built with React + TypeScript + Vite.
 
 - Node.js 20+
 - npm 10+
-- Docker (optional, for containerized production)
 
 ## Quick Start
 
@@ -20,10 +19,6 @@ npm install
 
 ```env
 VITE_API_BASE_URL=https://api.example.com
-VITE_TELEGRAM_SUPPORT_URL=https://t.me/moonlume_support
-VITE_TELEGRAM_BOT_URL=https://t.me/moonlume_support
-WEBAPP_PORT=4000
-WEBAPP_IMAGE_TAG=develop
 ```
 
 3. Run development server:
@@ -48,87 +43,18 @@ App runs on `http://127.0.0.1:8000`.
 - If `VITE_API_BASE_URL` is empty, requests use relative paths (same origin).
 - Dev proxy settings are in `vite.config.ts`.
 
-## Production (Without Docker)
+## Deployment
 
-1. Build:
+The site is deployed with GitHub Actions to GitHub Pages.
 
-```bash
-npm run build
-```
-
-2. Serve static files from `dist/` with any web server (Nginx, Caddy, Apache, `serve`, etc.).
-
-Example with `serve`:
-
-```bash
-npx serve -s dist -l 4000
-```
-
-## Docker Build + Run
-
-Build image:
-
-```bash
-docker build -t moonlumevpn-webapp-bolt:latest \
-  --build-arg VITE_API_BASE_URL=https://api.example.com \
-  .
-```
-
-Run container:
-
-```bash
-docker run -d --name moonlume-webapp -p 4000:4000 moonlumevpn-webapp-bolt:latest
-```
-
-## Docker Compose (Production)
-
-1. Ensure `.env` exists (use the example in Quick Start).
-2. Example `docker-compose.yml`:
-
-```yaml
-services:
-  moonlumevpn-webapp:
-    container_name: moonlumevpn-web
-    build:
-      context: .
-      args:
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
-        VITE_TELEGRAM_SUPPORT_URL: ${VITE_TELEGRAM_SUPPORT_URL}
-        VITE_TELEGRAM_BOT_URL: ${VITE_TELEGRAM_BOT_URL}
-    env_file:
-      - .env
-    image: ghcr.io/moonlumevpn/moonlumevpn-webapp-bolt:${WEBAPP_IMAGE_TAG:-develop}
-    ports:
-      - "${WEBAPP_PORT:-4000}:4000"
-    networks:
-      - moonlumevpn-network
-    restart: unless-stopped
-
-networks:
-  moonlumevpn-network:
-    external: true
-    name: moonlumevpn-network
-  
-```
-3. Pull and run (`develop` is default; set `WEBAPP_IMAGE_TAG=production` for production image):
-
-```bash
-docker compose up -d --build
-```
-
-4. Stop:
-
-```bash
-docker compose down
-```
+1. Push production-ready commits to the `production` branch.
+2. Make sure the repository has GitHub Pages enabled and uses the GitHub Actions source.
+3. Set the repository variable `VITE_API_BASE_URL` to the production API base URL if the backend is hosted separately.
+4. The workflow will build `dist/` and publish it to Pages automatically.
 
 ## Environment Variables
 
-- `VITE_API_BASE_URL` (required for external backend): backend base URL, e.g. `https://api.example.com`
-- `VITE_TELEGRAM_SUPPORT_URL` (optional): Telegram support link used on temporary redirect page
-- `VITE_TELEGRAM_BOT_URL` (optional): Telegram bot link used on temporary redirect page
-- `WEBAPP_PORT` (optional): host port for Docker Compose, default `4000`
-- `WEBAPP_IMAGE_TAG` (optional): Docker image tag for Compose, default `develop` (use `production` for prod)
+- `VITE_API_BASE_URL` (required for external backend and Pages deploy): backend base URL, e.g. `https://api.example.com`
 
 ## Project Structure
 

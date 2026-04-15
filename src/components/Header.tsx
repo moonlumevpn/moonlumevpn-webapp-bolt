@@ -1,6 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
-import { isAuthenticated, clearTokens } from '../lib/auth';
+import { APP_LINKS } from '../config/links';
 
 interface HeaderProps {
   isScrolled: boolean;
@@ -8,14 +8,6 @@ interface HeaderProps {
 
 export default function Header({ isScrolled }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isAuth, setIsAuth] = useState(isAuthenticated());
-
-  const handleLogout = () => {
-    clearTokens();
-    setIsAuth(false);
-    window.location.href = '/';
-  };
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -24,110 +16,87 @@ export default function Header({ isScrolled }: HeaderProps) {
     }
   };
 
+  const glassPrimaryButton = 'bg-white/55 backdrop-blur-xl border border-white/60 shadow-[0_8px_18px_rgba(44,88,165,0.14)]';
+  const glassSecondaryButton = 'bg-white/45 backdrop-blur-xl border border-white/60 shadow-[0_8px_18px_rgba(44,88,165,0.1)]';
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-dark/80 backdrop-blur-lg border-b border-purple-500/20' : 'bg-transparent'
+        isScrolled
+          ? 'bg-gradient-to-r from-white/72 via-white/64 to-white/72 backdrop-blur-2xl backdrop-saturate-150 border-b border-white/45 shadow-[0_10px_30px_rgba(33,77,154,0.16)]'
+          : 'bg-transparent'
       }`}
     >
-      <nav className="container mx-auto px-6 py-4">
+      <nav className={`container mx-auto px-6 py-4 ${isScrolled ? 'relative after:content-[\'\'] after:absolute after:inset-x-6 after:bottom-0 after:h-px after:bg-gradient-to-r after:from-transparent after:via-white/85 after:to-transparent' : ''}`}>
         <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2 cursor-pointer" onClick={() => scrollToSection('home')}>
-            <span className="text-3xl">🌙</span>
-            <span className="text-2xl font-bold text-white">Moonlume VPN</span>
+          <div className="flex items-center space-x-3 cursor-pointer"
+                onClick={() => (window.location.href = '/')}>
+            <img
+              src="/icon.png"
+              alt="MoonlumeVPN"
+              className="h-9 w-9 rounded-full ring-2 ring-blue-100"
+            />
+            <span className="text-xl md:text-2xl font-bold text-[var(--color-text)]">MoonlumeVPN</span>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
-            <button onClick={() => scrollToSection('home')} className="text-white hover:text-purple-400 transition-colors">
-              Главная
-            </button>
-            <button onClick={() => scrollToSection('features')} className="text-white hover:text-purple-400 transition-colors">
+            <button onClick={() => scrollToSection('features')} className="text-[var(--color-text-muted)] hover:text-[var(--color-primary-strong)] transition-colors font-medium">
               Преимущества
             </button>
-            <button onClick={() => scrollToSection('pricing')} className="text-white hover:text-purple-400 transition-colors">
+            <button onClick={() => scrollToSection('pricing')} className="text-[var(--color-text-muted)] hover:text-[var(--color-primary-strong)] transition-colors font-medium">
               Тарифы
             </button>
-            <button onClick={() => scrollToSection('faq')} className="text-white hover:text-purple-400 transition-colors">
+            <button onClick={() => scrollToSection('faq')} className="text-[var(--color-text-muted)] hover:text-[var(--color-primary-strong)] transition-colors font-medium">
               Вопросы и ответы
             </button>
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
-            {isAuth ? (
-              <>
-                <button
-                  onClick={() => (window.location.href = '/account')}
-                  className="btn-gradient px-6 py-2 rounded-full text-white font-semibold hover:scale-105 transition-transform"
-                >
-                  Личный кабинет
-                </button>
-                <button
-                  onClick={handleLogout}
-                  className="px-6 py-2 rounded-full text-white font-semibold border border-purple-500/50 hover:bg-purple-500/10 transition-colors"
-                >
-                  Выйти
-                </button>
-              </>
-            ) : (
-              <button
-                onClick={() => (window.location.href = '/login')}
-                className="btn-gradient px-6 py-2 rounded-full text-white font-semibold hover:scale-105 transition-transform"
-              >
-                Подключиться
-              </button>
-            )}
+          <div className="hidden md:flex items-center space-x-3">
+            <a
+              href={APP_LINKS.webApp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`btn-gradient px-6 py-2.5 rounded-full font-semibold hover:scale-[1.02] transition-transform ${glassPrimaryButton}`}
+            >
+              Подключиться
+            </a>
           </div>
 
           <button
-            className="md:hidden text-white"
+            className="md:hidden text-[var(--color-text)]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Открыть меню"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
 
         {mobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 space-y-4 animate-fade-in">
-            <button onClick={() => scrollToSection('home')} className="block text-white hover:text-purple-400 transition-colors">
+          <div className="md:hidden mt-4 p-4 rounded-2xl bg-white/95 border border-[var(--color-border)] shadow-[var(--shadow-soft)] space-y-4">
+            <button onClick={() => scrollToSection('home')} className="block w-full text-left text-[var(--color-text)] hover:text-[var(--color-primary-strong)] transition-colors">
               Главная
             </button>
-            <button onClick={() => scrollToSection('features')} className="block text-white hover:text-purple-400 transition-colors">
+            <button onClick={() => scrollToSection('features')} className="block w-full text-left text-[var(--color-text)] hover:text-[var(--color-primary-strong)] transition-colors">
               Преимущества
             </button>
-            <button onClick={() => scrollToSection('pricing')} className="block text-white hover:text-purple-400 transition-colors">
+            <button onClick={() => scrollToSection('pricing')} className="block w-full text-left text-[var(--color-text)] hover:text-[var(--color-primary-strong)] transition-colors">
               Тарифы
             </button>
-            <button onClick={() => scrollToSection('faq')} className="block text-white hover:text-purple-400 transition-colors">
+            <button onClick={() => scrollToSection('faq')} className="block w-full text-left text-[var(--color-text)] hover:text-[var(--color-primary-strong)] transition-colors">
               Вопросы и ответы
             </button>
             <div className="flex gap-2 pt-2">
-              {isAuth ? (
-                <>
-                  <button
-                    onClick={() => (window.location.href = '/account')}
-                    className="btn-gradient px-6 py-2 rounded-full text-white font-semibold flex-1"
-                  >
-                    Личный кабинет
-                  </button>
-                  <button
-                    onClick={handleLogout}
-                    className="px-6 py-2 rounded-full text-white font-semibold border border-purple-500/50 hover:bg-purple-500/10 transition-colors flex-1"
-                  >
-                    Выйти
-                  </button>
-                </>
-              ) : (
-                <button
-                  onClick={() => (window.location.href = '/login')}
-                  className="btn-gradient px-6 py-2 rounded-full text-white font-semibold w-full"
-                >
-                  Подключиться
-                </button>
-              )}
+              <a
+                href={APP_LINKS.webApp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`btn-gradient px-4 py-2 rounded-full font-semibold w-full text-center ${glassPrimaryButton}`}
+              >
+                Подключиться
+              </a>
             </div>
           </div>
         )}
-        
       </nav>
     </header>
   );

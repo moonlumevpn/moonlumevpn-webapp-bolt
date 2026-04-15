@@ -1,3 +1,4 @@
+import { APP_LINKS } from '../../config/links';
 import type { SeoPageContent } from './SeoLandingPage';
 
 const seoPages: Record<string, SeoPageContent> = {
@@ -76,7 +77,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Установите Moonlume VPN и получайте безопасный доступ к интернету дома и в поездках. Приватность, защита и стабильное соединение — в одном приложении.',
     ctaButton: 'Скачать Moonlume VPN',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
   '/vpn-for-android': {
     path: '/vpn-for-android',
@@ -185,7 +186,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Установите Moonlume VPN и подключайте защищённое соединение в один клик. Приватность и безопасность — всегда под рукой.',
     ctaButton: 'Скачать Moonlume VPN для Android',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
   '/vpn-for-ios': {
     path: '/vpn-for-ios',
@@ -296,7 +297,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Установите Moonlume VPN и получите безопасный интернет на iPhone и iPad. Защита, приватность и удобство — в одном приложении.',
     ctaButton: 'Скачать Moonlume VPN для iOS',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
   '/vpn-for-windows': {
     path: '/vpn-for-windows',
@@ -389,7 +390,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Скачайте Moonlume VPN для компьютера и подключайтесь к защищённому интернету за несколько минут.',
     ctaButton: 'Скачать Moonlume VPN для Windows',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
   '/free-vpn': {
     path: '/free-vpn',
@@ -480,7 +481,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Получите 7 дней защищённого соединения и убедитесь в качестве сервиса. Приватность и безопасность без риска.',
     ctaButton: 'Активировать бесплатный период',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
   '/private-vpn': {
     path: '/private-vpn',
@@ -575,7 +576,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Подключите Moonlume VPN и защитите трафик, IP и личные данные в любой сети.',
     ctaButton: 'Подключить приватный VPN',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
   '/vpn-for-mac': {
     path: '/vpn-for-mac',
@@ -673,7 +674,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Установите Moonlume VPN и защитите соединение на macOS. Приватность, безопасность и стабильная работа — в одном приложении.',
     ctaButton: 'Скачать Moonlume VPN для Mac',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
   '/vpn-for-pc': {
     path: '/vpn-for-pc',
@@ -786,7 +787,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Подключите Moonlume VPN и обеспечьте безопасный интернет на компьютере. Приватность и стабильность в одном решении.',
     ctaButton: 'Скачать Moonlume VPN для PC',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
   '/secure-vpn': {
     path: '/secure-vpn',
@@ -899,7 +900,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Получите безопасное и приватное соединение с Moonlume VPN. Быстрое подключение и надёжная защита в любой сети.',
     ctaButton: 'Подключить Moonlume VPN',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
   '/vpn-download': {
     path: '/vpn-download',
@@ -1012,7 +1013,7 @@ const seoPages: Record<string, SeoPageContent> = {
     ctaText:
       'Установите Moonlume VPN и получите защищённый интернет за пару минут. Приватность и безопасность — без сложных настроек.',
     ctaButton: 'Скачать Moonlume VPN',
-    ctaHref: '/payment',
+    ctaHref: APP_LINKS.webApp,
   },
 };
 
