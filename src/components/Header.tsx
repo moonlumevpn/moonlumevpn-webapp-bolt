@@ -1,5 +1,6 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { APP_LINKS } from '../config/links';
 
 interface HeaderProps {
   isScrolled: boolean;
@@ -51,14 +52,14 @@ export default function Header({ isScrolled }: HeaderProps) {
           </div>
 
           <div className="hidden md:flex items-center space-x-3">
-            {
-              <button
-                onClick={() => (window.location.href = '/login')}
-                className={`btn-gradient px-6 py-2.5 rounded-full font-semibold hover:scale-[1.02] transition-transform ${glassPrimaryButton}`}
-              >
-                Подключиться
-              </button>
-            }
+            <a
+              href={APP_LINKS.webApp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`btn-gradient px-6 py-2.5 rounded-full font-semibold hover:scale-[1.02] transition-transform ${glassPrimaryButton}`}
+            >
+              Подключиться
+            </a>
           </div>
 
           <button
@@ -85,13 +86,14 @@ export default function Header({ isScrolled }: HeaderProps) {
               Вопросы и ответы
             </button>
             <div className="flex gap-2 pt-2">
-              {
-                <button
-                  onClick={() => (window.location.href = '/login')}
-                  className={`btn-gradient px-4 py-2 rounded-full font-semibold w-full ${glassPrimaryButton}`}
-                >
-                  Подключиться
-                </button>}
+              <a
+                href={APP_LINKS.webApp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`btn-gradient px-4 py-2 rounded-full font-semibold w-full text-center ${glassPrimaryButton}`}
+              >
+                Подключиться
+              </a>
             </div>
           </div>
         )}

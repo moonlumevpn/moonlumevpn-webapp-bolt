@@ -1,6 +1,7 @@
 import { Check } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import api from '../lib/api';
+import { APP_LINKS } from '../config/links';
 
 interface Plan {
   id: string;
@@ -54,7 +55,7 @@ export default function Pricing() {
   const [error, setError] = useState<string | null>(null);
 
   const handleChoosePlan = () => {
-    window.location.href = '/login';
+    window.open(APP_LINKS.webApp, '_blank', 'noopener,noreferrer');
   };
 
   useEffect(() => {

@@ -6,7 +6,6 @@ import Pricing from './components/Pricing';
 import ServerLocations from './components/ServerLocations';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
-import TemporaryRedirectPage from './pages/TemporaryRedirectPage';
 import SeoLandingPage from './pages/seo/SeoLandingPage';
 import seoPages from './pages/seo/seoPages';
 
@@ -21,10 +20,6 @@ function App() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  if (window.location.pathname === '/login') {
-    return <TemporaryRedirectPage />;
-  }
 
   const seoContent = seoPages[window.location.pathname];
   if (seoContent) {

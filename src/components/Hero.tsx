@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ShieldCheck, Sparkles, Globe2, HelpCircle } from 'lucide-react';
 import api from '../lib/api';
+import { APP_LINKS } from '../config/links';
 
 interface Stat {
   label: string;
@@ -35,7 +36,6 @@ export const glassHover =
   "hover:bg-white/70 hover:shadow-[0_10px_35px_rgba(0,0,0,0.12)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300";
 
 export default function Hero() {
-  const reconnectPath = '/login';
   const [stats, setStats] = useState<Stat[]>([
     { label: 'Сервера', value: '0', accent: 'blue' },
     { label: 'Страны', value: '0', accent: 'cyan' },
@@ -105,7 +105,7 @@ export default function Hero() {
               <button
                 type="button"
                 onClick={() => {
-                  window.location.href = reconnectPath;
+                  window.open(APP_LINKS.webApp, '_blank', 'noopener,noreferrer');
                 }}
                 className={`
     px-8 py-4 rounded-full text-lg
