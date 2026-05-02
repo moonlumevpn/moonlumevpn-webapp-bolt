@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import { ShieldCheck, Sparkles, Globe2, HelpCircle } from 'lucide-react';
-import api from '../lib/api';
+import { ShieldCheck, Sparkles, Zap, HelpCircle } from 'lucide-react';
 import { APP_LINKS } from '../config/links';
 
 interface Stat {
@@ -9,24 +7,6 @@ interface Stat {
   accent: 'blue' | 'cyan';
 }
 
-interface Proxy {
-  stableId: string;
-  name: string;
-}
-
-function extractCountryName(proxyName: string): string {
-  const countryPart = proxyName.split(' - ')[0]?.trim() ?? '';
-  const [firstToken, ...restTokens] = countryPart.split(' ');
-
-  if (!firstToken) return countryPart;
-
-  const hasFlagToken = /[\p{Extended_Pictographic}\p{Regional_Indicator}]/u.test(firstToken);
-  if (hasFlagToken && restTokens.length > 0) {
-    return restTokens.join(' ').trim();
-  }
-
-  return countryPart;
-}
 export const glassPrimaryButton =
   "relative isolate overflow-hidden bg-blue-500/15 backdrop-blur-2xl backdrop-saturate-150 border border-white/40 text-blue-700 font-semibold shadow-[0_10px_25px_rgba(0,0,0,0.12)]";
   
@@ -36,38 +16,12 @@ export const glassHover =
   "hover:bg-white/70 hover:shadow-[0_10px_35px_rgba(0,0,0,0.12)] hover:scale-[1.03] active:scale-[0.98] transition-all duration-300";
 
 export default function Hero() {
-  const [stats, setStats] = useState<Stat[]>([
-    { label: 'Сервера', value: '0', accent: 'blue' },
-    { label: 'Страны', value: '0', accent: 'cyan' },
+  const stats: Stat[] = [
     { label: 'Скорость', value: 'до 100 Мб/с', accent: 'blue' },
+    { label: 'Приватность', value: 'AES-256', accent: 'cyan' },
+    { label: 'Пробный период', value: '7 дней', accent: 'blue' },
     { label: 'Поддержка', value: '24/7', accent: 'cyan' }
-  ]);
-
-  useEffect(() => {
-    let mounted = true;
-    api
-      .get('/v1/public/proxies')
-      .then((res) => {
-        if (!mounted) return;
-        if (res.data?.success && Array.isArray(res.data.data)) {
-          const proxies: Proxy[] = res.data.data;
-          const serverCount = proxies.length;
-          const uniqueCountries = new Set(proxies.map((p) => extractCountryName(p.name))).size;
-
-          setStats([
-            { label: 'Сервера', value: serverCount.toString(), accent: 'blue' },
-            { label: 'Страны', value: uniqueCountries.toString(), accent: 'cyan' },
-            { label: 'Скорость', value: 'до 100 Мб/с', accent: 'blue' },
-            { label: 'Поддержка', value: '24/7', accent: 'cyan' }
-          ]);
-        }
-      })
-      .catch((err) => console.error('Failed to load proxies:', err));
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
+  ];
 
   return (
     <section id="home"
@@ -91,14 +45,14 @@ export default function Hero() {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-[var(--color-text)] mb-6 leading-tight">
-              Подключайтесь к интернету
+              Подключите VPN
               <br />
-              <span className="text-gradient">без ограничений и рисков</span>
+              <span className="text-gradient">в браузере</span>
             </h1>
 
             <p className="text-lg md:text-xl text-[var(--color-text-muted)] mb-10 max-w-3xl">
-              Шифрование, быстрые европейские серверы и стабильная работа приложений.
-              Стартуйте с бесплатного периода и выбирайте тариф по вашим задачам.
+              7 дней бесплатно, тарифы от 79 ₽ и управление подпиской в браузере.
+              Telegram доступен как дополнительный канал, если он работает в вашей сети.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
@@ -115,7 +69,7 @@ export default function Hero() {
   `}
               >
   <span className="relative z-10">
-    Попробовать бесплатно (7 дней)
+    Подключиться
   </span>
                 <span className="absolute inset-0 bg-gradient-to-br from-white/40 via-white/10 to-transparent opacity-60 pointer-events-none" />
               </button>
@@ -134,7 +88,7 @@ export default function Hero() {
   `}
 
               >
-                Выбрать тариф
+                Смотреть тарифы
               </button>
             </div>
 
@@ -145,9 +99,9 @@ export default function Hero() {
                     <span className={`text-xl font-bold ${stat.accent === 'blue' ? 'text-[#1f6dff]' : 'text-[#0ba5e9]'}`}>
                       {stat.value}
                     </span>
-                    {stat.label === 'Сервера' && <Globe2 className="w-4 h-4 text-[#1f6dff]" />}
-                    {stat.label === 'Страны' && <ShieldCheck className="w-4 h-4 text-[#0ba5e9]" />}
                     {stat.label === 'Скорость' && <Sparkles className="w-4 h-4 text-[#1f6dff]" />}
+                    {stat.label === 'Приватность' && <ShieldCheck className="w-4 h-4 text-[#0ba5e9]" />}
+                    {stat.label === 'Пробный период' && <Zap className="w-4 h-4 text-[#1f6dff]" />}
                     {stat.label === 'Поддержка' && <HelpCircle className="w-4 h-4 text-[#0ba5e9]" />}
                   </div>
                   <p className="text-sm text-[var(--color-text-muted)]">{stat.label}</p>
@@ -160,4 +114,3 @@ export default function Hero() {
     </section>
   );
 }
-

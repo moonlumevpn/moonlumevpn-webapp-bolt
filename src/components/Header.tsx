@@ -17,7 +17,6 @@ export default function Header({ isScrolled }: HeaderProps) {
   };
 
   const glassPrimaryButton = 'bg-white/55 backdrop-blur-xl border border-white/60 shadow-[0_8px_18px_rgba(44,88,165,0.14)]';
-  const glassSecondaryButton = 'bg-white/45 backdrop-blur-xl border border-white/60 shadow-[0_8px_18px_rgba(44,88,165,0.1)]';
 
   return (
     <header
@@ -33,10 +32,10 @@ export default function Header({ isScrolled }: HeaderProps) {
                 onClick={() => (window.location.href = '/')}>
             <img
               src="/icon.png"
-              alt="MoonlumeVPN"
+              alt="Moonlume VPN"
               className="h-9 w-9 rounded-full ring-2 ring-blue-100"
             />
-            <span className="text-xl md:text-2xl font-bold text-[var(--color-text)]">MoonlumeVPN</span>
+            <span className="text-xl md:text-2xl font-bold text-[var(--color-text)]">Moonlume VPN</span>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">

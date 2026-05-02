@@ -15,13 +15,7 @@ Frontend web application for Moonlume, built with React + TypeScript + Vite.
 npm install
 ```
 
-2. Create `.env` with this example:
-
-```env
-VITE_API_BASE_URL=https://web.moonlumevpn.ru/api
-```
-
-3. Run development server:
+2. Run development server:
 
 ```bash
 npm run dev
@@ -37,11 +31,7 @@ App runs on `http://127.0.0.1:8000`.
 - `npm run lint` - Run ESLint
 - `npm run typecheck` - Run TypeScript type checks
 
-## Development Notes
-
-- API base URL comes from `VITE_API_BASE_URL`, with a default of `https://web.moonlumevpn.ru/api`.
-- In development, `/api` is proxied by `vite.config.ts` so local requests still work without CORS issues.
-- If you need a different backend, override `VITE_API_BASE_URL` in `.env` or as a repo variable.
+- The landing content is static and does not require backend API configuration.
 
 ## Deployment
 
@@ -49,12 +39,7 @@ The site is deployed with GitHub Actions to GitHub Pages.
 
 1. Push production-ready commits to the `production` branch.
 2. Make sure the repository has GitHub Pages enabled and uses the GitHub Actions source.
-3. Set the repository variable `VITE_API_BASE_URL` to the production API base URL, usually `https://web.moonlumevpn.ru/api`.
-4. The workflow will build `dist/` and publish it to Pages automatically.
-
-## Environment Variables
-
-- `VITE_API_BASE_URL` (required for external backend and Pages deploy): backend base URL, e.g. `https://web.moonlumevpn.ru/api`
+3. The workflow will build `dist/` and publish it to Pages automatically.
 
 ## Project Structure
 

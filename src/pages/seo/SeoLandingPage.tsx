@@ -75,7 +75,7 @@ export default function SeoLandingPage({ isScrolled, content }: SeoLandingPagePr
                   href={APP_LINKS.telegramBot}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-6 py-3 rounded-full text-[var(--color-text)] font-semibold border border-[var(--color-border)] hover:bg-white transition-colors text-center"
+                  className="self-center text-[var(--color-primary-strong)] font-semibold underline-offset-4 hover:underline"
                 >
                   Открыть Telegram-бот
                 </a>

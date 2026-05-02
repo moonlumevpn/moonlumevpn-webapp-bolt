@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, Mail } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 import { APP_LINKS } from '../config/links';
 
 const TelegramIcon = ({ className = '' }: { className?: string }) => (
@@ -16,39 +16,31 @@ const TelegramIcon = ({ className = '' }: { className?: string }) => (
 const faqs = [
   {
     question: 'Что такое VPN?',
-    answer: 'VPN — это технология защищенного интернет-соединения. Она создает зашифрованный канал между вашим устройством и сервером VPN, что помогает защитить личные данные и повысить конфиденциальность в сети.'
+    answer: 'VPN — это технология защищенного интернет-соединения. Она создает зашифрованный канал для вашего трафика, что помогает защитить личные данные и повысить конфиденциальность в сети.'
   },
   {
-    question: 'Безопасно ли использовать MoonlumeVPN?',
-    answer: 'Да. MoonlumeVPN использует современный протокол VLESS и шифрование трафика, что помогает защитить данные пользователя при работе в интернете.'
-  },
-  {
-    question: 'Какие устройства поддерживает MoonlumeVPN?',
+    question: 'Какие устройства поддерживает Moonlume VPN?',
     answer: 'MoonlumeVPN можно использовать на смартфонах, планшетах и компьютерах. Поддерживаются платформы iOS, Android, Windows и macOS.'
   },
   {
     question: 'Сколько устройств можно подключить?',
-    answer: 'Количество устройств зависит от выбранного тарифа. Базовый план позволяет подключить 1 устройство, Премиум — до 2 устройств, Безлимит — до 3 устройств одновременно.'
+    answer: 'В тариф входит базовое количество устройств: Базовый — 1, Премиум — 2, Безлимит — 3. К любому тарифу можно добавить еще от 1 до 4 устройств.'
   },
   {
     question: 'Как происходит оплата?',
     answer: 'Оплата производится через Систему быстрых платежей (СБП). После успешной оплаты доступ к VPN активируется автоматически.'
   },
   {
-    question: 'Есть ли ограничения по скорости?',
-    answer: 'Скорость зависит от выбранного тарифа. Базовый план — до 10 Мб/с, Премиум — до 50 Мб/с, тариф Безлимит — максимальная доступная скорость сети.'
-  },
-  {
     question: 'Есть ли бесплатный пробный период?',
     answer: 'Да. Мы предоставляем 7 дней бесплатного доступа, чтобы вы могли протестировать сервис и оценить скорость и стабильность соединения.'
   },
   {
-    question: 'Что делать, если возникли проблемы с подключением?',
-    answer: 'Попробуйте сменить сервер или перезапустить приложение. Если проблема сохраняется, обратитесь в поддержку — мы поможем решить ее как можно быстрее.'
+    question: 'Нужен ли Telegram для подключения?',
+    answer: 'Нет. Основной способ начать работу — подключиться через браузер. Telegram-бот, поддержка и канал новостей доступны как дополнительные ссылки.'
   },
   {
-    question: 'Хранит ли MoonlumeVPN данные о пользователях?',
-    answer: 'MoonlumeVPN не ведет журналов активности пользователей. Мы не храним историю посещенных сайтов или интернет-трафика.'
+    question: 'Что делать, если возникли проблемы с подключением?',
+    answer: 'Попробуйте перезапустить приложение и проверить качество сети. Если проблема сохраняется, обратитесь в поддержку — мы поможем решить ее как можно быстрее.'
   }
 ];
 
@@ -106,26 +98,24 @@ export default function FAQ() {
 
           <div className="mt-12 text-center">
             <p className="text-[var(--color-text-muted)] mb-4">Остались вопросы?</p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm">
               <a
                 href={APP_LINKS.telegramBot}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 px-6 py-3 bg-white border border-[var(--color-border)] rounded-full text-sm font-medium transition-[border-color,background-color,color] duration-500 hover:border-[#229ED9] hover:bg-[#229ED9]/5"
+                className="group inline-flex items-center gap-2 font-medium text-[var(--color-primary-strong)] underline-offset-4 transition-colors hover:text-[#229ED9] hover:underline"
               >
-                <TelegramIcon className="text-[var(--color-primary-strong)] transition-colors duration-300 group-hover:text-[#229ED9]" />
-                <span className="text-[var(--color-text)] transition-colors duration-300 group-hover:text-[#229ED9]">
-                  Написать в Telegram
-                </span>
+                <TelegramIcon className="transition-colors duration-300 group-hover:text-[#229ED9]" />
+                <span>Открыть Telegram-бот</span>
               </a>
               <a
-                href={APP_LINKS.businessEmail}
-                className="group inline-flex items-center gap-2 px-6 py-3 bg-white border border-[var(--color-border)] rounded-full text-sm font-medium transition-[border-color,background-color,color] duration-500 hover:border-[#1f6dff] hover:bg-[#1f6dff]/5"
+                href={APP_LINKS.telegramSupportBot}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-2 font-medium text-[var(--color-primary-strong)] underline-offset-4 transition-colors hover:text-[#1f6dff] hover:underline"
               >
-                <Mail className="w-5 h-5 text-[var(--color-primary-strong)] transition-colors duration-300 group-hover:text-[#1f6dff]" />
-                <span className="text-[var(--color-text)] transition-colors duration-300 group-hover:text-[#1f6dff]">
-                  Написать на почту
-                </span>
+                <TelegramIcon className="transition-colors duration-300 group-hover:text-[#1f6dff]" />
+                <span>Написать в поддержку</span>
               </a>
             </div>
           </div>
@@ -138,4 +128,3 @@ export default function FAQ() {
     </section>
   );
 }
-

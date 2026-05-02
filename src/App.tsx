@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
+import HowToStart from './components/HowToStart';
 import Pricing from './components/Pricing';
-import ServerLocations from './components/ServerLocations';
 import FAQ from './components/FAQ';
 import Footer from './components/Footer';
 import SeoLandingPage from './pages/seo/SeoLandingPage';
@@ -36,8 +36,8 @@ function App() {
         <Header isScrolled={isScrolled} />
         <Hero />
         <Features />
+        <HowToStart />
         <Pricing />
-        <ServerLocations />
         <FAQ />
         <Footer />
       </div>

@@ -14,8 +14,8 @@ const features = [
     iconBg: 'bg-green-100',
     iconColor: 'text-green-600',
     title: 'Высокая скорость',
-    description: 'Быстрые серверы без ограничений',
-    bullets: ['50+ стран', 'Автовыбор сервера', 'Безлимит']
+    description: 'Комфортное подключение без ограничений',
+    bullets: ['Стабильная скорость', 'Автоподключение', 'Безлимит']
   },
   {
     icon: Smartphone,
@@ -46,7 +46,7 @@ const features = [
     iconBg: 'bg-indigo-100',
     iconColor: 'text-indigo-600',
     title: '24/7 Поддержка',
-    description: 'Поддержка через Telegram-бот',
+    description: 'Поддержка в Telegram',
     bullets: ['Быстрые ответы']
   }
 ];
@@ -97,4 +97,3 @@ export default function Features() {
     </section>
   );
 }
-
